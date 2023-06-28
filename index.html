@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcoba Program Exercise #3</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #B6DBEA;
+        }
+
+        .item2 {
+            grid-area: img;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item3 { grid-area: empty; }
+        .item4 { grid-area: checkbox; }
+        .item5 { grid-area: empty2; }
+        .navbar { grid-area: navbar;}
+        .content { grid-area: content;}
+
+        .divider{
+            display: grid;
+            grid-template-areas: 'navbar content';
+            grid-template-columns: 150px auto;
+        }
+
+        .navbar{
+            background-color: black;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+        }
+
+        nav ul li {
+            /* width: 100%; */
+            text-align: center;
+            padding: 50px 0 50px 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content{
+            display: grid;
+            grid-template-areas:
+            'empty empty empty'
+            'img img img'
+            'checkbox checkbox checkbox'
+            'empty2 empty2 empty2';
+            gap: 20px;
+            /* background-color: #2196F3; */
+            padding: 10px;
+        }
+
+        .content > div {
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+
+        img{
+            border: 4px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 black;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .image{
+            transition: all 0.5s ease-in-out;
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                width: 500px;
+                height: 625px;
+                background: url("image.avif");
+                border: 4px solid black;
+                box-shadow: 5px 5px 0 black;
+                border-radius: 10px;
+                transition: all 0.5s ease-in-out;
+                opacity: 0;
+            }
+        }
+
+        .image:hover{
+            transform: scale(110%);
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                width: 500px;
+                height: 625px;
+                background: url("image.avif");
+                border-radius: 40px;
+                box-shadow: 20px 20px 0 black;
+                transition: all 0.5s ease-in-out;
+                opacity: 1;
+            }
+        }
+
+        .image:hover img{
+            border-radius: 40px;
+            box-shadow: 20px 20px 0 black;
+        }
+
+        .checkBox {
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 0px 2px black;
+        }
+
+        .checkBox div {
+            width: 60px;
+            height: 60px;
+            background-color: black;
+            top: -52px;
+            left: -52px;
+            position: absolute;
+            transform: rotateZ(45deg);
+            z-index: 100;
+        }
+
+        .checkBox input[type=checkbox]:checked + div {
+            left: -10px;
+            top: -10px;
+        }
+
+        .checkBox input[type=checkbox] {
+            position: absolute;
+            left: 50px;
+            visibility: hidden;
+        }
+
+        .transition {
+            transition: 300ms ease;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="divider">
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="item2">
+                <div class="image">
+                    <img src="removed.jpg" alt="Image">
+                </div>
+            </div>
+            <div class="item3"></div>  
+            <div class="item4">
+                <label class="checkBox">
+                    <input type="checkbox" id="ch1">
+                    <div class="transition"></div>
+                </label>
+            </div>
+            <div class="item5"></div>
+        </div>
+    </div>
+</body>
+</html>
